@@ -182,8 +182,9 @@ def admin_login():
             session['admin_logged_in'] = True
             return redirect(url_for('admin_panel'))
         return "ভুল ইউজারনেম বা পাসওয়ার্ড!"
-    return render_template('admin_dashboard.html')
-
+    # ভুল লাইন ছিল: return render_template('admin_dashboard.html')
+# নিচেরটি দিয়ে বদলে দাও:
+return render_template('admin_dashboard.html', t_users=0, t_dep=0, t_wit=0, deposits=[], withdraws=[])
 
 @app.route('/admin-sifat-secret')
 def admin_panel():
