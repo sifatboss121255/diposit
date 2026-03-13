@@ -214,6 +214,7 @@ def admin_panel():
 
 @app.route('/approve_deposit/<int:id>')
 def approve_deposit(id):
+    print(f"Approving deposit for ID: {id}")
     if not session.get('admin_logged_in'): return redirect(url_for('admin_login'))
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
