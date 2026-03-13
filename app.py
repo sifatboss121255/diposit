@@ -389,6 +389,8 @@ def run_daily_income():
 
 if __name__ == '__main__':
     # পোর্ট এবং হোস্ট সেট করা যাতে রেন্ডার বা অন্য সার্ভার চিনতে পারে
-    import os
-    port = int(os.environ.get("PORT", 5000))
+import os
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 10000)) # এখানে ৫০০০ এর বদলে ১০০০০ দিয়ে দাও
     app.run(host='0.0.0.0', port=port)
