@@ -99,7 +99,7 @@
                     <td style="font-weight: bold; color: #28a745;">৳ {{ d[2] }}</td>
                     <td style="color: #ffa500; font-weight: bold;">{{ d[4] }}</td>
                     <td>
-                        <a href="{{ url_for('approve_deposit', id=deposit_id) }}" class="btn btn-success">Approve</a>
+                        <a href="/approve_deposit/{{ d[0] }}" class="btn-approve">Approve</a>
                     </td>
                 </tr>
                 {% else %}
