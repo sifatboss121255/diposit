@@ -388,9 +388,6 @@ def run_daily_income():
     return "সফলভাবে সবার অ্যাকাউন্টে ডেইলি ইনকাম যোগ করা হয়েছে!"
 
 if __name__ == '__main__':
-    # পোর্ট এবং হোস্ট সেট করা যাতে রেন্ডার বা অন্য সার্ভার চিনতে পারে
-import os
-
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000)) # এখানে ৫০০০ এর বদলে ১০০০০ দিয়ে দাও
+    import os
+    port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
