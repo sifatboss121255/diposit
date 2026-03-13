@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Plans</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* পুরো পেজকে ওপর থেকে নিচে নামানোর জন্য */
+        body {
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            /* নিচের এই প্যাডিংটা VIP 1 কে অনেকটা নিচে নামিয়ে আনবে */
+            padding-top: 80px !important;
+            padding-bottom: 50px;
+        }
+
+        .welcome-msg {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #4b0082;
+        }
+
+        .plans-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding: 0 15px;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #eee;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .plan-header {
+            background: #4b0082;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 24px;
+            color: #28a745;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .plan-details {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 15px 10px;
+        }
+
+        .plan-details li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #444;
+            display: flex;
+            align-items: center;
+        }
+
+        .plan-details i {
+            color: #28a745;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .buy-btn {
+            background: #4b0082;
+            color: white;
+            display: block;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        .buy-btn:hover { background: #320056; transform: scale(1.02); }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #4b0082;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-msg">আমাদের VIP প্ল্যানসমূহ</div>
+
+        <div class="plans-container">
+            <div class="plan-card">
+                <div class="plan-header">VIP 1</div>
+                <div class="plan-price">500 Taka</div>
+                <ul class="plan-details">
+                    <li><i class="fas fa-check-circle"></i> দৈনিক ৪ টি বিজ্ঞাপন</li>
+                    <li><i class="fas fa-check-circle"></i> দৈনিক আয় ৪০ Taka</li>
+                    <li><i class="fas fa-check-circle"></i> মেয়াদ ৬০ দিন</li>
+                </ul>
+                <a href="/buy_plan/VIP1/500" class="buy-btn" onclick="return confirm('আপনি কি নিশ্চিত যে VIP 1 কিনতে চান?')">এখনই কিনুন</a>
+            </div>
+
+            <div class="plan-card">
+                <div class="plan-header">VIP 2</div>
+                <div class="plan-price">1000 Taka</div>
+                <ul class="plan-details">
+                    <li><i class="fas fa-check-circle"></i> দৈনিক ৭ টি বিজ্ঞাপন</li>
+                    <li><i class="fas fa-check-circle"></i> দৈনিক আয় ৭০ Taka</li>
+                    <li><i class="fas fa-check-circle"></i> মেয়াদ ৬০ দিন</li>
+                </ul>
+                <a href="/buy_plan/VIP2/1000" class="buy-btn" onclick="return confirm('আপনি কি নিশ্চিত যে VIP 2 কিনতে চান?')">এখনই কিনুন</a>
+            </div>
+
+            <div class="plan-card">
+                <div class="plan-header">VIP 3</div>
+                <div class="plan-price">1500 Taka</div>
+                <ul class="plan-details">
+                    <li><i class="fas fa-check-circle"></i> দৈনিক ১০ টি বিজ্ঞাপন</li>
+                    <li><i class="fas fa-check-circle"></i> দৈনিক আয় ১০০ Taka</li>
+                    <li><i class="fas fa-check-circle"></i> মেয়াদ ৬০ দিন</li>
+                </ul>
+                <a href="/buy_plan/VIP3/1500" class="buy-btn" onclick="return confirm('আপনি কি নিশ্চিত যে VIP 3 কিনতে চান?')">এখনই কিনুন</a>
+            </div>
+        </div>
+
+        <a href="{{ url_for('index') }}" class="back-btn"><i class="fas fa-arrow-left"></i> হোমে ফিরে যান</a>
+    </div>
+</body>
+</html>

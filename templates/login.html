@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-msg">লগইন করুন</div>
+        <form action="/login" method="POST" class="form-container">
+            <label>মোবাইল নাম্বার</label>
+            <input type="text" name="phone" placeholder="আপনার নাম্বার দিন" required>
+
+            <label>পাসওয়ার্ড</label>
+            <input type="password" name="password" placeholder="পাসওয়ার্ড দিন" required>
+
+            <button type="submit" class="submit-btn">প্রবেশ করুন</button>
+        </form>
+        <p style="text-align: center; font-size: 14px;">অ্যাকাউন্ট নেই? <a href="/register">নতুন খুলুন</a></p>
+    </div>
+</body>
+</html>

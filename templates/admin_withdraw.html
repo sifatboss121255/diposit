@@ -1,0 +1,18 @@
+<h2>Pending Withdraw Requests</h2>
+<table border="1">
+    <tr>
+        <th>User ID</th>
+        <th>Amount</th>
+        <th>Phone</th>
+        <th>Method</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    {% for req in requests %}
+    <tr>
+        <td>{{ req[1] }}</td> <td>{{ req[2] }}</td> <td>{{ req[3] }}</td> <td>{{ req[4] }}</td> <td>{{ req[5] }}</td> <td>
+            <a href="{{ url_for('approve_withdraw', id=req[0]) }}">Confirm Payment</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

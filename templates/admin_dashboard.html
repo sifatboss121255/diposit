@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sifat Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background: #0f0f0f; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        .login-container { display: flex; justify-content: center; align-items: center; min-height: 80vh; }
+        .login-card { background: #1a1a1a; padding: 40px; border-radius: 15px; width: 350px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #444; background: #252525; color: white; box-sizing: border-box; }
+        .btn-login { background: #28a745; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px; }
+
+        .admin-content { max-width: 1100px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #333; }
+
+        .stats-container { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+        .stat-card { background: #1a1a1a; border: 1px solid #333; padding: 20px; border-radius: 12px; flex: 1; min-width: 200px; text-align: center; transition: 0.3s; }
+        .stat-card:hover { border-color: #444; transform: translateY(-5px); }
+        .stat-card h2 { margin: 10px 0 0; font-size: 24px; color: #fff; }
+        .stat-card p { margin: 0; color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        .icon-box { font-size: 28px; margin-bottom: 10px; }
+
+        .table-box { background: #1a1a1a; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #333; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 15px; text-align: center; border-bottom: 1px solid #333; }
+        th { background: #252525; color: #28a745; }
+        .btn-approve { background: #28a745; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; display: inline-block; }
+        .logout { color: #ff4444; text-decoration: none; font-weight: bold; }
+
+        .btn-daily { background: #ffa500; color: #000; padding: 15px 25px; border-radius: 10px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s; margin-bottom: 25px; }
+        .btn-daily:hover { background: #ffcc00; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    {% if not session.get('admin_logged_in') %}
+    <div class="login-container">
+        <div class="login-card">
+            <i class="fas fa-user-shield" style="font-size: 50px; color: #28a745; margin-bottom: 20px;"></i>
+            <h2>Admin Login</h2>
+            <form action="/admin_login" method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" class="btn-login">LOGIN</button>
+            </form>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="admin-content">
+        <div class="header">
+            <h2 style="margin:0;">Sifat Admin Panel</h2>
+            <a href="/admin_logout" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="icon-box" style="color: #007bff;"><i class="fas fa-users"></i></div>
+                <p>Total Users</p>
+                <h2>{{ t_users }}</h2>
+            </div>
+            <div class="stat-card">
+                <div class="icon-box" style="color: #28a745;"><i class="fas fa-wallet"></i></div>
+                <p>Total Deposits</p>
+                <h2>৳ {{ t_dep }}</h2>
+            </div>
+            <div class="stat-card">
+                <div class="icon-box" style="color: #ff4444;"><i class="fas fa-hand-holding-usd"></i></div>
+                <p>Total Withdraws</p>
+                <h2>৳ {{ t_wit }}</h2>
+            </div>
+        </div>
+
+        <div style="text-align: center; gap: 10px; display: flex; justify-content: center;">
+            <a href="/run_daily_income" class="btn-daily" onclick="return confirm('আপনি কি নিশ্চিত?')">
+                <i class="fas fa-coins"></i> ডেইলি ইনকাম ডিস্ট্রিবিউট
+            </a>
+            <a href="/reset_all_tasks" class="btn-daily" style="background: #ff4444; color: white;">
+                <i class="fas fa-sync"></i> সবার টাস্ক রিসেট করুন
+            </a>
+        </div>
+
+        <div class="table-box">
+            <h3 style="color: #28a745;"><i class="fas fa-wallet"></i> Pending Deposits</h3>
+            <table>
+                <tr>
+                    <th>User ID</th>
+                    <th>Sender Number</th>
+                    <th>Amount</th>
+                    <th>TrxID</th>
+                    <th>Action</th>
+                </tr>
+                {% for d in deposits %}
+                <tr>
+                    <td>{{ d[1] }}</td>
+                    <td style="color: #00d4ff;">{{ d[3] }}</td>
+                    <td style="font-weight: bold; color: #28a745;">৳ {{ d[2] }}</td>
+                    <td style="color: #ffa500; font-weight: bold;">{{ d[4] }}</td>
+                    <td>
+                        <a href="/approve_deposit/{{ d[0] }}" class="btn-approve">Approve</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="5">কোনো ডিপোজিট রিকোয়েস্ট নেই।</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="table-box">
+            <h3 style="color: #ff4444;"><i class="fas fa-hand-holding-usd"></i> Pending Withdraws</h3>
+            <table>
+                <tr>
+                    <th>User ID</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Receiver Number</th>
+                    <th>Action</th>
+                </tr>
+                {% for w in withdraws %}
+                <tr>
+                    <td>{{ w[1] }}</td>
+                    <td style="font-weight: bold; color: #ff4444;">৳ {{ w[2] }}</td>
+                    <td>{{ w[4] }}</td>
+                    <td style="color: #00d4ff; font-weight: bold;">{{ w[3] }}</td>
+                    <td>
+                        <a href="/approve_withdraw/{{ w[0] }}" class="btn-approve" style="background: #007bff;">Mark Paid</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="5">কোনো উইথড্র রিকোয়েস্ট নেই।</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+</body>
+</html>

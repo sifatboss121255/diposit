@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refer & Earn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .refer-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+        }
+        .gift-icon {
+            font-size: 60px;
+            color: #ff9800;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        h2 { color: #4b0082; margin-bottom: 10px; }
+        p { color: #555; line-height: 1.6; }
+        .bonus-text { color: #28a745; font-weight: bold; font-size: 20px; }
+
+        .link-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 25px 0;
+            word-break: break-all;
+            font-weight: 600;
+            color: #4b0082;
+            border: 2px dashed #cbd5e0;
+            font-size: 14px;
+        }
+        .copy-btn {
+            background: #4b0082;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 16px;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .copy-btn:hover { background: #35005e; transform: scale(1.02); }
+        .copy-btn:active { transform: scale(0.98); }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .back-btn:hover { color: #4b0082; }
+    </style>
+</head>
+<body>
+
+    <div class="refer-card">
+        <div class="gift-icon">
+            <i class="fas fa-gift"></i>
+        </div>
+        <h2>বন্ধুকে ইনভাইট করুন</h2>
+        <p>আপনার রেফারেল লিঙ্ক ব্যবহার করে কেউ অ্যাকাউন্ট খুললে আপনি পাবেন <br> <span class="bonus-text">৳ ১০ বোনাস!</span></p>
+
+        <div class="link-box" id="refLink">{{ link }}</div>
+
+        <button class="copy-btn" onclick="copyLink()">
+            <i class="fas fa-copy"></i> লিঙ্ক কপি করুন
+        </button>
+
+        <a href="/profile" class="back-btn">
+            <i class="fas fa-arrow-left"></i> প্রোফাইলে ফিরে যান
+        </a>
+    </div>
+
+    <script>
+        function copyLink() {
+            var text = document.getElementById("refLink").innerText;
+
+            // আধুনিক কপি সিস্টেম
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function() {
+                    showSuccess();
+                }).catch(function() {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            showSuccess();
+        }
+
+        function showSuccess() {
+            alert("সাফল্যের সাথে লিঙ্কটি কপি হয়েছে!");
+        }
+    </script>
+
+</body>
+</html>

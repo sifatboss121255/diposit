@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লেনদেনের ইতিহাস</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .history-card { background: white; margin: 15px 0; padding: 15px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        .status-badge { padding: 4px 8px; border-radius: 5px; font-size: 12px; font-weight: bold; }
+        .Pending { background: #fff3cd; color: #856404; }
+        .Approved, .Paid { background: #d4edda; color: #155724; }
+        h3 { color: #4b0082; border-bottom: 2px solid #4b0082; display: inline-block; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-msg">লেনদেনের ইতিহাস</div>
+
+        <h3>ডিপোজিট রেকর্ড</h3>
+        {% for d in deposits %}
+        <div class="history-card">
+            <p><strong>পরিমাণ:</strong> ৳{{ d[0] }}</p>
+            <p><strong>TrxID:</strong> {{ d[1] }}</p>
+            <p><strong>অবস্থা:</strong> <span class="status-badge {{ d[2] }}">{{ d[2] }}</span></p>
+        </div>
+        {% endfor %}
+
+        <h3>উইথড্র রেকর্ড</h3>
+        {% for w in withdraws %}
+        <div class="history-card">
+            <p><strong>পরিমাণ:</strong> ৳{{ w[0] }}</p>
+            <p><strong>মেথড:</strong> {{ w[1] }}</p>
+            <p><strong>অবস্থা:</strong> <span class="status-badge {{ w[2] }}">{{ w[2] }}</span></p>
+        </div>
+        {% endfor %}
+
+        <br>
+        <a href="/" class="back-btn" style="text-decoration: none; color: #4b0082; font-weight: bold;">
+            <i class="fas fa-arrow-left"></i> হোমে ফিরে যান
+        </a>
+    </div>
+</body>
+</html>

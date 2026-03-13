@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-msg">নতুন অ্যাকাউন্ট তৈরি করুন</div>
+        <form action="/register" method="POST" class="form-container">
+            <label>পুরো নাম</label>
+            <input type="text" name="username" placeholder="আপনার নাম লিখুন" required>
+
+            <label>মোবাইল নাম্বার</label>
+            <input type="text" name="phone" placeholder="আপনার নাম্বার" required>
+
+            <label>পাসওয়ার্ড</label>
+            <input type="password" name="password" placeholder="একটি কঠিন পাসওয়ার্ড দিন" required>
+
+            <button type="submit" class="submit-btn">অ্যাকাউন্ট খুলুন</button>
+        </form>
+    </div>
+</body>
+</html>

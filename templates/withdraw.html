@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-msg">টাকা উত্তোলন (Withdraw)</div>
+        <form action="/withdraw" method="POST" class="form-container">
+            <label>টাকার পরিমাণ (৳)</label>
+            <input type="number" name="amount" placeholder="কত টাকা তুলতে চান?" required>
+
+            <label>পেমেন্ট মেথড</label>
+            <select name="method" style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd;">
+                <option value="Bkash">বিকাশ</option>
+                <option value="Nagad">নগদ</option>
+            </select>
+
+            <label>আপনার মোবাইল নাম্বার</label>
+            <input type="text" name="phone" placeholder="টাকা নেওয়ার নাম্বার" required>
+
+            <button type="submit" class="submit-btn" style="background: #e67e22;">রিকোয়েস্ট পাঠান</button>
+        </form>
+        <br>
+        <a href="/" style="display: block; text-align: center; text-decoration: none; color: #4b0082; font-weight: bold;">← হোমে ফিরে যান</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,380 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px; /* মোবাইল ভিউর জন্য */
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.banner {
+    background: linear-gradient(45deg, #1a1a1a, #444);
+    color: #ffd700;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 4px solid #007bff;
+}
+
+.welcome-msg {
+    background-color: #4b0082;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.menu-item i {
+    font-size: 24px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* কালার কোড */
+.blue { color: #007bff; }
+.green { color: #28a745; }
+.orange { color: #fd7e14; }
+.purple { color: #6f42c1; }
+.red { color: #dc3545; }
+.dark-blue { color: #343a40; }
+.teal { color: #20c997; }
+
+.highlight {
+    border: 2px solid #32cd32;
+    padding: 5px;
+    border-radius: 8px;
+    color: #32cd32;
+}
+
+.how-to-work {
+    margin: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.play-button {
+    font-size: 40px;
+    color: red;
+    margin-top: 10px;
+    cursor: pointer;
+}
+/* Plans Page Styles */
+.plans-container {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+
+.plan-card {
+    border: 2px solid #00c0f3;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    position: relative;
+}
+
+.plan-header {
+    background: #00c0f3;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.multiplier {
+    float: right;
+    font-size: 10px;
+}
+
+.plan-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.plan-details {
+    list-style: none;
+    padding: 0;
+    font-size: 11px;
+    text-align: left;
+    color: #555;
+}
+
+.plan-details li { margin-bottom: 5px; }
+
+.buy-btn {
+    background-color: #7cb342;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+/* Deposit Page Styles */
+.deposit-box {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff9e6;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.form-container {
+    padding: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* padding ফিক্স করার জন্য */
+}
+
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.method img {
+    width: 60px;   /* লোগো কতটুকু চওড়া হবে */
+    height: 60px;  /* লোগো কতটুকু লম্বা হবে */
+    object-fit: contain; /* ছবি যাতে চ্যাপ্টা না হয়ে যায় */
+    margin-bottom: 8px;
+}
+
+/* পুরো পেজের ডিজাইন */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.deposit-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 380px;
+    text-align: center;
+}
+
+/* পেমেন্ট মেথড বক্স ডিজাইন */
+.payment-methods {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.method {
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    padding: 15px 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.method:hover {
+    border-color: #28a745;
+    background-color: #f8fff9;
+}
+
+/* আমরা যে লোগো বানালাম তার ডিজাইন */
+.logo-placeholder {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+}
+
+.bkash-logo { background-color: #E1136E; }
+.nagad-logo { background-color: #FF671C; }
+.rocket-logo { background-color: #7B217E; }
+
+.bkash-logo::before { content: 'bK'; }
+.nagad-logo::before { content: 'NG'; }
+.rocket-logo::before { content: 'RK'; }
+
+.method p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* বাটন ডিজাইন */
+.next-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* পেমেন্ট মেথড বক্স ডিজাইন */
+.payment-methods {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    margin: 20px 0 !important;
+}
+
+.method {
+    flex: 1 !important;
+    border: 1px solid #ddd !important;
+    padding: 15px 5px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    background: #fff !important;
+}
+
+/* গোল আইকন ডিজাইন */
+.logo-placeholder {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+}
+
+/* আলাদা আলাদা রঙ */
+.bkash-bg { background-color: #E1136E !important; }
+.nagad-bg { background-color: #FF671C !important; }
+.rocket-bg { background-color: #7B217E !important; }
+
+.method p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* পুরো পেজকে উপর থেকে নিচে নামানোর জন্য */
+.container, body {
+    padding-top: 30px !important;
+}
+
+/* প্ল্যান কন্টেইনারের ডিজাইন ঠিক করা */
+.plans-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 10px; /* উপরে এবং নিচে ২০ পিক্সেল জায়গা ছাড়বে */
+}
+
+/* প্রতিটি কার্ডের মাঝখানে গ্যাপ ঠিক করা */
+.plan-card {
+    width: 90%;
+    max-width: 350px;
+    margin-bottom: 10px;
+}
+
+<style>
+    /* মেইন বডি বা কন্টেইনারকে অনেকখানি নিচে নামানো */
+    body {
+        padding-top: 120px !important; /* ওপরে ১২০ পিক্সেল জায়গা খালি করবে */
+    }
+
+    .plans-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* কার্ডগুলোর মাঝখানে গ্যাপ বাড়ালাম */
+        padding-bottom: 50px;
+    }
+
+    /* প্রথম VIP কার্ডটাকে আরও নিচে ঠেলে দেওয়া */
+    .plan-card:first-child {
+        margin-top: 20px !important;
+    }
+
+    /* ব্যানার যদি ফিক্সড থাকে তবে সেটাকে পেছনের লেয়ারে রাখা (যদি দরকার হয়) */
+    header, .banner {
+        z-index: 1000;
+    }
+</style>

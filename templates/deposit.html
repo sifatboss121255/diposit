@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .deposit-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+
+        /* টাকার ইনপুট স্টাইল */
+        .amount-input { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccc; font-size: 18px; text-align: center; box-sizing: border-box; }
+
+        /* টাকা সিলেক্ট করার বাটন */
+        .amt-buttons { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
+        .amt-btn { flex: 1; padding: 10px; border: 1.5px solid #28a745; background: white; color: #28a745; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+        /* পেমেন্ট মেথড বক্স */
+        .payment-methods { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
+        .method { flex: 1; border: 1.5px solid #ddd; padding: 15px 5px; border-radius: 12px; cursor: pointer; transition: 0.3s; background: #fff; text-align: center; }
+        .method:hover { border-color: #28a745; }
+
+        /* গোল আইকন */
+        .logo-placeholder { width: 45px; height: 45px; border-radius: 50%; margin: 0 auto 8px; display: flex; justify-content: center; align-items: center; font-weight: bold; color: white; font-size: 14px; }
+        .bk-bg { background: #E1136E; }
+        .ng-bg { background: #FF671C; }
+        .rk-bg { background: #7B217E; }
+
+        .method p { margin: 0; font-size: 13px; font-weight: bold; color: #333; }
+        .next-btn { background: #28a745; color: white; border: none; width: 100%; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        .back-link { display: block; margin-top: 15px; color: #666; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="deposit-card">
+    <h4 style="color: #28a745; margin-top: 0;">Minimum deposit 500 BDT</h4>
+
+    <form action="/deposit" method="POST">
+
+        <input type="number" id="amount" name="amount" class="amount-input" value="1000" required>
+
+        <div class="amt-buttons">
+            <button type="button" class="amt-btn" onclick="document.getElementById('amount').value='500'">500</button>
+            <button type="button" class="amt-btn" onclick="document.getElementById('amount').value='1000'">1000</button>
+            <button type="button" class="amt-btn" onclick="document.getElementById('amount').value='2000'">2000</button>
+            <button type="button" class="amt-btn" onclick="document.getElementById('amount').value='5000'">5000</button>
+        </div>
+
+        <div class="payment-methods">
+            <div class="method" onclick="document.getElementById('pay_method').value='bkash'">
+                <div class="logo-placeholder bk-bg">bK</div>
+                <p>bKash</p>
+            </div>
+            <div class="method" onclick="document.getElementById('pay_method').value='nagad'">
+                <div class="logo-placeholder ng-bg">NG</div>
+                <p>Nagad</p>
+            </div>
+            <div class="method" onclick="document.getElementById('pay_method').value='rocket'">
+                <div class="logo-placeholder rk-bg">RK</div>
+                <p>Rocket</p>
+            </div>
+        </div>
+
+        <input type="hidden" name="method" id="pay_method" required>
+
+        <button type="submit" class="next-btn">NEXT</button>
+    </form>
+    <a href="/" class="back-link">হোমে ফিরে যান</a>
+</div>
+
+</body>
+</html>

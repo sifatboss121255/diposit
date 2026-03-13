@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Details</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .payment-card { background: white; width: 100%; max-width: 400px; border-radius: 15px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .blue-header { background: #0000ff; color: white; padding: 15px; border-radius: 10px 10px 0 0; text-align: center; font-weight: bold; margin: -20px -20px 20px -20px; }
+        .notice-box { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 10px; font-size: 14px; line-height: 1.6; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .copy-box { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 12px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #ddd; }
+        .copy-btn { background: #28a745; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-size: 12px; }
+        .input-group { margin-top: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 14px; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        .submit-btn { background: #28a745; color: white; border: none; width: 100%; padding: 15px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="payment-card">
+    <div class="blue-header">{{ method }} Personal Send Money</div>
+
+    <div class="notice-box">
+        <strong>Notice:</strong> সফলভাবে ডিপোজিট সম্পন্ন করতে আপনার একাউন্ট থেকে সঠিকভাবে এবং সঠিক অ্যামাউন্ট নিচের নাম্বারটিতে অবশ্যই সেন্ড মানি করে ট্রানজেকশন আইডিটি নিচের বক্সে দিয়ে <strong>ADD DEPOSIT</strong> এ ক্লিক করুন।
+    </div>
+
+    <div class="copy-box">
+        <span><img src="https://admin.bka.sh/storage/files/bkash-logo.png" width="20"> {{ method }} Personal: <strong>01848580864</strong></span>
+        <button class="copy-btn" onclick="copyText('01848580864')">Copy</button>
+    </div>
+
+    <div class="copy-box">
+        <span>৳ Amount: <strong>{{ amount }} Taka</strong></span>
+        <button class="copy-btn" onclick="copyText('{{ amount }}')">Copy</button>
+    </div>
+
+    <form action="/deposit" method="POST">
+        <input type="hidden" name="amount" value="{{ amount }}">
+        <input type="hidden" name="method" value="{{ method }}">
+
+        <div class="input-group">
+            <label>Transaction ID</label>
+            <input type="text" name="trxid" placeholder="Enter Transaction ID" required>
+            <p style="font-size: 11px; color: #666; margin-top: 5px;">You must correctly enter the Transaction ID.</p>
+        </div>
+
+        <button type="submit" class="submit-btn">ADD DEPOSIT</button>
+    </form>
+</div>
+
+<script>
+    function copyText(text) {
+        navigator.clipboard.writeText(text);
+        alert("Copied: " + text);
+    }
+</script>
+
+</body>
+</html>

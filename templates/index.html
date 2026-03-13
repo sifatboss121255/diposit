@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earning Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="banner">
+            <p>২০০০ টাকা ডিপোজিট করলে ৫০০ টাকা বোনাস পাবেন</p>
+            <p>৫০০০ টাকা ডিপোজিট করলে ২৫০০ টাকা বোনাস পাবেন</p>
+        </div>
+
+        <div class="welcome-msg">
+            {% if session['username'] %}
+                স্বাগতম, {{ session['username'] }}!
+            {% else %}
+                আমাদের ওয়েবসাইটে আপনাকে স্বাগতম
+            {% endif %}
+        </div>
+
+        <div class="menu-grid">
+
+            <a href="/task" style="text-decoration: none; color: inherit;">
+                <div class="menu-item">
+                    <i class="fas fa-tasks blue"></i>
+                    <span>Task</span>
+                </div>
+            </a>
+
+            <a href="/deposit" style="text-decoration: none; color: inherit;">
+                <div class="menu-item">
+                    <i class="fas fa-wallet green"></i>
+                    <span>Deposit</span>
+                </div>
+            </a>
+
+            <a href="/plans" style="text-decoration: none; color: inherit;">
+                <div class="menu-item">
+                    <i class="fas fa-layer-group purple"></i>
+                    <span>Plan</span>
+                </div>
+            </a>
+
+            <a href="/withdraw" style="text-decoration: none; color: inherit;">
+                <div class="menu-item">
+                    <i class="fas fa-money-bill-wave" style="color: #007bff;"></i>
+                    <span>Withdraw</span>
+                </div>
+            </a>
+
+            <a href="/profile" style="text-decoration: none; color: inherit;">
+                <div class="menu-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </div>
+            </a>
+
+            <a href="/transactions" style="text-decoration: none; color: inherit;">
+                <div class="menu-item">
+                    <i class="fas fa-list-ul dark-blue"></i>
+                    <span>Transaction</span>
+                </div>
+            </a>
+
+            <a href="/refer" style="text-decoration: none; color: inherit;">
+                <div class="menu-item">
+                    <i class="fas fa-users teal"></i>
+                    <span>Refer</span>
+                </div>
+            </a>
+
+            <div class="menu-item highlight">
+                <i class="fas fa-headset"></i>
+                <span>HelpLine</span>
+            </div>
+
+        </div> <div class="how-to-work">
+            <h3>How To Work</h3>
+            <p>Click here to see youtube video tutorial</p>
+            <div class="play-button">
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
